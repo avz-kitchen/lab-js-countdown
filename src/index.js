@@ -9,7 +9,7 @@ let timer = null; // Variable to store the interval
 // Your code goes here ...
 const startButton = document.getElementById("start-btn");
 startButton.addEventListener("click", function() {
-  startCountdown(10);
+  startCountdown(DURATION);
 });
 
 // ITERATION 2: Start Countdown
@@ -20,19 +20,17 @@ function startCountdown(timer) {
   startButton.disabled = true;
 
   let remainingTime = timer; 
-  console.log(`Remaining time: ${remainingTime} seconds`);
+  //console.log(`Remaining time: ${remainingTime} seconds`);
   updateTimeDisplay(remainingTime);
   const interval = setInterval(() => {
     remainingTime--; 
-    console.log(`Remaining time: ${remainingTime} seconds`);
+    //console.log(`Remaining time: ${remainingTime} seconds`);
     updateTimeDisplay(remainingTime);
     if (remainingTime === 0) {
       clearInterval(interval);
       console.log("Countdown finished!");
       showToast();
       startButton.disabled = false;
-
-
     }
 },1000)
 
@@ -40,13 +38,13 @@ function startCountdown(timer) {
 function updateTimeDisplay(time) {
   const timeElement = document.getElementById('time');
   timeElement.textContent = `${time}`;
+
   let emoji = '';
   for (let i = 0; i < time; i++) {
-    emoji += '⏳'; // You can replace '⏳' with any emoji you like
-  }
+    emoji += '🐱'; 
 
   timeElement.textContent = emoji;
-}
+}}
 
 
 
@@ -61,9 +59,7 @@ function showToast(message) {
   toastElement.classList.add('show');
   setTimeout(() => {
     toastElement.classList.remove('show');
-  }, 3000); 
-
-
+  }, 3000);
 
   // BONUS: ITERATION 4: TOAST CLOSE BUTTON
 
